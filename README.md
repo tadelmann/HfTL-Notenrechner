@@ -2,7 +2,7 @@
 Einfache Java Swing App um den HfTL PDF-Notenspiegel aus dem [HIS-System](http://www.his.de/) zu parsen.
 
 ## Download
-  * [1.0](FOLGT)
+  * [1.0](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.0/HfTL-Notenrechner.jar)
   
 ## Funktionen
   * Zeigt Anzahl bestandenen Fächern
