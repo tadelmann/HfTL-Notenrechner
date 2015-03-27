@@ -59,7 +59,7 @@ public class View extends JFrame implements ActionListener, Observer {
         public View(final ParsePDF pdf) throws Exception {
                 this.setPdf(pdf);
 
-                this.setTitle("LUH Notenspiegel Rechner");
+                this.setTitle("HfTL Notenspiegel Rechner");
                 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 
                 JPanel panel = new JPanel(); //Main Panel
@@ -79,8 +79,10 @@ public class View extends JFrame implements ActionListener, Observer {
                 status.setEditorKit(JEditorPane.createEditorKitForContentType("text/html"));
                 status.setEditable(false);
 
-                status.setText(" <p><center>LUH-NR"+
+                status.setText(" <p><center>Hochschule für Telekommunikation Leipzig"+
                 		"<br><br>"+
+                		"Tim Adelmann"+
+                		"<br>"+
                 		"Check for latest releases on <a href=\"https://github.com/iFadi/luh-nr/\">Github</a></center>.</p>");
 
                 status.setForeground(Color.black.darker());
@@ -182,7 +184,7 @@ public class View extends JFrame implements ActionListener, Observer {
 			if (!path.equals("update"))
 				pdf.parseFile(path);
 			getStatus().setText(
-					 "<div style='margin-left:2px;'><center>"+ pdf.getSubject()+
+					 "<div style='margin-left:2px;'><center>"+ pdf.getName()+
 					 "<br> <i>" + pdf.getCertificate()+"</i></center>"+
   				     "<br> Anzahl benotete Fächer: "+pdf.getNumberOfSubjectsWithGrade()+" [<i>"+(int)pdf.getWeightedCredits()+" CP</i>]"+" <a href=\"http://rated\">[+]</a>"+ 
   					 "<br> Anzahl unbenotete Fächer: "+pdf.getNumberOfSubjectsWithoutGrade()+" [<i>"+(int)pdf.getUnweightedCredits()+" CP</i>]"+" <a href=\"http://nonrated\">[+]</a>"+ 

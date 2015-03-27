@@ -43,7 +43,7 @@ public class ParsePDF extends Observable{
         private String numberOfSubjectsWithGrade; // holds the passed number of all RATED subjects.
         private String numberOfSubjectsWithoutGrade; // holds the passed number of all NON RATED subjects.
         private String startThesis; // tells whether you are able to Start your thesis based on the credit points.
-        private String subject; // studied subject. i.e. B.Sc.Informatik, M.Sc.Mathematik, etc...
+        private String name; // studied subject. i.e. B.Sc.Informatik, M.Sc.Mathematik, etc...
         private String certificate; // Tells whether Bachelor or Master.
         private String finalGrade; // holds the Calculated note based on all passed Exams.
         
@@ -83,9 +83,9 @@ public class ParsePDF extends Observable{
                                         calculateAverageValue(mark, credit, 0);
                                         
                                         // Debug
-//                                        System.out.println(courses.elementAt(i));
-//                                        System.out.println("Note: "+mark);
-//                                        System.out.println("Credit: " + credit);
+//                                       System.out.println(courses.elementAt(i));
+//                                       System.out.println("Note: "+mark);
+//                                       System.out.println("Credit: " + credit);
                                         
                                 }
                                 else { // Not Rated Exams.
@@ -98,11 +98,15 @@ public class ParsePDF extends Observable{
 //                                        System.out.println(courses.elementAt(i));
 //                                        System.out.println("Credit: " + credit);
                                 }
-                        }
-                }
+                       // }
+               
+                	//System.out.println(courses.elementAt(i)+" Index of bestanden: "+courses.indexOf("20"));
+                	}
+                
                 
                 loadingBar();
                 calculateAverageValue(null, null, 2);
+            }
         }
         
         public void loadingBar() {
@@ -133,13 +137,13 @@ public class ParsePDF extends Observable{
             // find all passed exams and save them in a Vector called courses.
             for(int i=0; i<lines.length; i++) {
 //            	System.out.println(lines[i]);
-            	if(lines[i].contains("Fach:")) {
-            		setSubject(lines[i]);
+            	if(lines[i].contains("Name des Studierenden:")) {
+            		setName(lines[i]);
             	}
             	if(lines[i].contains("Abschluss:")) {
             		setCertificate(lines[i]);
             	}
-            	if(lines[i].contains("BE")) {
+            	if(lines[i].contains("bestanden")) {
             		courses.addElement(lines[i]);
                 }
             }
@@ -220,24 +224,10 @@ public class ParsePDF extends Observable{
         public boolean isExam(Vector<String> vector, int index) {
                 if(vector.elementAt(index).indexOf("PL") > -1)
                         return true;
-                if(vector.elementAt(index).indexOf("SL") > -1)
+                if(vector.elementAt(index).indexOf("MP") > -1)
                         return true;
-                if(vector.elementAt(index).indexOf("WL") > -1)
-                        return true;
-                if(vector.elementAt(index).indexOf("PR") > -1)
-                        return true;
-                if(vector.elementAt(index).indexOf("GL") > -1)
-                    	return true;
-                if(vector.elementAt(index).indexOf("BA") > -1)
-                		return true;
-                if(vector.elementAt(index).indexOf("MO") > -1)
-        				return true;
-        		if(vector.elementAt(index).indexOf("LN") > -1)
-        				return true;
-        		if(vector.elementAt(index).indexOf("LA") > -1)
-        				return true;
-        		if(vector.elementAt(index).indexOf("TL") > -1)
-        				return true;
+                if(vector.elementAt(index).indexOf("PVL") > -1)
+                    return true;
                 else
                         return false;
         }
@@ -265,19 +255,10 @@ public class ParsePDF extends Observable{
          */
         public String getCredit(Vector<String> vector, int index) {
         		int startCreditPosition, endCreditPosition;
-        		if (subject.equals("Fach: Elektrotechnik und Informationstechnik")) {
-	        			startCreditPosition = vector.elementAt(index).indexOf("BE")+2; // Position of BE, warning if the exam title have BE, may cause parsing error!!
-	                	endCreditPosition = vector.elementAt(index).indexOf("BE")+4; // Position of BE
-	                	// if half credit points
-	                	if (vector.elementAt(index).charAt(endCreditPosition-1) == ',') {
-	            			endCreditPosition++;
-	            		}
-        		} else {
-	                	startCreditPosition = vector.elementAt(index).indexOf("BE")+3; // Position of BE, warning if the exam title have BE, may cause parsing error!!
-	                	endCreditPosition = vector.elementAt(index).indexOf("BE")+5; // Position of BE
-        		}
+	                	startCreditPosition = vector.elementAt(index).indexOf("bestanden")+10; // Position of BE, warning if the exam title have BE, may cause parsing error!!
+	                	endCreditPosition = vector.elementAt(index).indexOf("bestanden")+12; // Position of BE
                 String credit = vector.elementAt(index).substring(startCreditPosition,endCreditPosition);
-                
+               
                 return credit;
         }
         
@@ -290,8 +271,8 @@ public class ParsePDF extends Observable{
          */
         public String getMark(Vector<String> vector, int index) {
                 // find the start & end mark position of the Exam.
-                int startMarkPosition = vector.elementAt(index).lastIndexOf("B")-4;
-                int endMarkPosition = vector.elementAt(index).lastIndexOf("B")-1;
+                int startMarkPosition = vector.elementAt(index).lastIndexOf("bestanden")-4;
+                int endMarkPosition = vector.elementAt(index).lastIndexOf("bestanden")-1;
 
                 // Replace the Comma with a dot in order to be able to calculate.
                 String mark = vector.elementAt(index).substring(startMarkPosition,endMarkPosition).replace(',', '.');
@@ -370,16 +351,16 @@ public class ParsePDF extends Observable{
 		 * 
 		 * @return The Subject your Studying i.e. "B.Sc. Informatik"
 		 */
-		public String getSubject() {
-			return subject;
+		public String getName() {
+			return name;
 		}
 
 		/**
 		 * 
 		 * @param subject
 		 */
-		public void setSubject(String subject) {
-			this.subject = subject;
+		public void setName(String name) {
+			this.name = name;
 		}
 		
 		/**
@@ -541,7 +522,7 @@ public class ParsePDF extends Observable{
 	        setNumberOfSubjectsWithGrade(null); 
 	        setNumberOfSubjectsWithoutGrade(null);
 	        setStartThesis(null); 
-	        setSubject(null); 
+	        setName(null); 
 	        setCertificate(null); 
 	        setFinalGrade(null);
 		}
