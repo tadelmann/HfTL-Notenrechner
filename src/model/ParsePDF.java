@@ -525,5 +525,7 @@ public class ParsePDF extends Observable{
 	        setName(null); 
 	        setCertificate(null); 
 	        setFinalGrade(null);
+	        rankedNumberOfSubjects = 0;
+	        unrankedNumberOfSubjects = 0;
 		}
 }
