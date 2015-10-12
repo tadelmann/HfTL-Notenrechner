@@ -64,7 +64,7 @@ public class ParsePDF extends Observable{
                 //Debug
 //                System.out.println(getSubject() +" "+getCertificate());
                 for(int i=0; i<courses.size(); i++) { //iterate over the passed courses
-                        
+                	//System.out.println(courses.elementAt(i).substring(0,4));
                         // Check if the line is an Exam.
                         if(isExam(courses, i)) {
                                 
@@ -227,7 +227,9 @@ public class ParsePDF extends Observable{
                 if(vector.elementAt(index).indexOf("MP") > -1)
                         return true;
                 if(vector.elementAt(index).indexOf("PVL") > -1)
-                    return true;
+                    	return true;
+                if(vector.elementAt(index).indexOf("Profilierung") > -1 && ( vector.elementAt(index).indexOf("SoSe") > -1 || vector.elementAt(index).indexOf("WiSe") > -1))
+                	return true;
                 else
                         return false;
         }
