@@ -2,9 +2,6 @@
 Einfaches Java Swing App um den LUH PDF-Notenspiegel aus dem [HIS-System](http://www.his.de/) zu parsen.
 
 ## Download
-<<<<<<< HEAD
-  * [1.4.2](https://github.com/iFadi/luh-nr/releases/download/1.4.2/luh-nr.jar)
-=======
   * [1.0](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.0/HfTL-Notenrechner.jar)
   * [1.1](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.1/hftl-notenrechner-v11.jar)
   * [1.2](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.2/hftl-notenrechner-v12.jar)
