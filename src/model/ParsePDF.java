@@ -240,10 +240,11 @@ public class ParsePDF extends Observable{
          * @param vector
          * @param index
          * @return Rated Exam or Non-Rated Exam
+         * Prüfung, ob Note (Wert mit Komma) in Zeile vorkommt, die ungleich 0,0 (wegen unbenoteter Anrechnung) ist.
          */
         public boolean isRated(Vector<String> vector, int index) {
-                if(vector.elementAt(index).contains(","))
-                        return true;
+                if(vector.elementAt(index).contains(",") && (vector.elementAt(index).indexOf("0,0") <= -1))
+                		return true;            		
                 else
                         return false;
         }
