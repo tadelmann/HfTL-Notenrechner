@@ -143,7 +143,7 @@ public class ParsePDF extends Observable{
             	if(lines[i].contains("Abschluss:")) {
             		setCertificate(lines[i]);
             	}
-            	if(lines[i].contains("bestanden")) {
+            	if(lines[i].contains("bestanden") && !lines[i].contains("nicht bestanden")) {
             		courses.addElement(lines[i]);
                 }
             }
