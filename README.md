@@ -7,6 +7,7 @@ Einfaches Java Swing App um den LUH PDF-Notenspiegel aus dem [HIS-System](http:/
   * [1.2](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.2/hftl-notenrechner-v12.jar)
   * [1.3](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.3/HfTL-Notenrechner_v13.jar)
   * [1.4](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.4/HfTL-Notenrechner_v14.jar)
+  * [1.5](https://github.com/tadelmann/HfTL-Notenrechner/releases/download/1.5/hftl-notenrechner_v15.jar)
   
 ## Funktionen
   * Note berechnen für das Fach Informatik/E-Technik
