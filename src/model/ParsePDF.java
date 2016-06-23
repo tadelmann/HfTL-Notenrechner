@@ -259,10 +259,16 @@ public class ParsePDF extends Observable{
         public String getCredit(Vector<String> vector, int index) {
         		int startCreditPosition, endCreditPosition;
 	                	startCreditPosition = vector.elementAt(index).indexOf("bestanden")+10; // Position of BE, warning if the exam title have BE, may cause parsing error!!
-	                	endCreditPosition = vector.elementAt(index).indexOf("bestanden")+12; // Position of BE
+	                   	if (vector.elementAt(index).length() > vector.elementAt(index).indexOf("bestanden")+12) {
+	                		endCreditPosition = vector.elementAt(index).indexOf("bestanden")+13;
+	                	}
+	                	else
+	                	{
+	                		endCreditPosition = vector.elementAt(index).indexOf("bestanden")+12; // Position of BE
+	                	}
                 String credit = vector.elementAt(index).substring(startCreditPosition,endCreditPosition);
                 credit = credit.replace(",", ".");
-               
+                System.out.println(credit);
                 return credit;
         }
         
