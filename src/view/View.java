@@ -186,10 +186,10 @@ public class View extends JFrame implements ActionListener, Observer {
 			getStatus().setText(
 					 "<div style='margin-left:2px;'><center>"+ pdf.getName()+
 					 "<br> <i>" + pdf.getCertificate()+"</i></center>"+
-  				     "<br> Anzahl benotete Fächer: "+pdf.getNumberOfSubjectsWithGrade()+" [<i>"+(int)pdf.getWeightedCredits()+" CP</i>]"+" <a href=\"http://rated\">[+]</a>"+ 
-  					 "<br> Anzahl unbenotete Fächer: "+pdf.getNumberOfSubjectsWithoutGrade()+" [<i>"+(int)pdf.getUnweightedCredits()+" CP</i>]"+" <a href=\"http://nonrated\">[+]</a>"+ 
+  				     "<br> Anzahl benotete Fächer: "+pdf.getNumberOfSubjectsWithGrade()+" [<i>"+(double)pdf.getWeightedCredits()+" CP</i>]"+" <a href=\"http://rated\">[+]</a>"+ 
+  					 "<br> Anzahl unbenotete Fächer: "+pdf.getNumberOfSubjectsWithoutGrade()+" [<i>"+(double)pdf.getUnweightedCredits()+" CP</i>]"+" <a href=\"http://nonrated\">[+]</a>"+ 
   					 "<br> Anzahl gesamte bestandene Fächer: "+pdf.getNumberOfSubjects()+
-					 "<br><br> Credit Points: "+"<b>"+(int)pdf.getCredits()+"</b>"+
+					 "<br><br> Credit Points: "+"<b>"+(double)pdf.getCredits()+"</b>"+
 					 "<br> Note: "+"<b>"+pdf.getFinalGrade()+"</b>"+
 					 "<br><br> Abschlussarbeit starten: "+pdf.getStartThesis()+
 					 "<br> Studium Geschafft in Prozent... "+
